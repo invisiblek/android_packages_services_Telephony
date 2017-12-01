@@ -122,7 +122,8 @@ public class CdmaOptions {
         // Read platform settings for carrier settings
         final boolean isCarrierSettingsEnabled = carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_CARRIER_SETTINGS_ENABLE_BOOL);
-        if (!isCarrierSettingsEnabled) {
+        if (!isCarrierSettingsEnabled ||
+                    carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL)) {
             Preference pref = mPrefScreen.findPreference(BUTTON_CARRIER_SETTINGS_KEY);
             if (pref != null) {
                 mPrefScreen.removePreference(pref);
